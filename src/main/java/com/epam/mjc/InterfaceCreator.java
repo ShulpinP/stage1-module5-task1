@@ -24,7 +24,7 @@ public class InterfaceCreator {
     public Supplier<List<String>> filterCollection(List<String> values) {
         return () -> values.stream().filter(value -> Character.isUpperCase(value.charAt(0))).
                 filter(value ->value.charAt(value.length()-1) == '.').
-                filter(value ->value.split(" ").length < 3).toList();
+                filter(value ->value.split(" ").length > 3).toList();
 
     }
 
