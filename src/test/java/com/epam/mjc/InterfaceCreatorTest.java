@@ -82,7 +82,7 @@ public class InterfaceCreatorTest {
                         List.of("222",
                                 "91"),
                         Map.of("222", 3,
-                                "91", 4))
+                                "91", 2))
         );
     }
 
@@ -132,9 +132,18 @@ public class InterfaceCreatorTest {
         assertEquals(result, expected);
     }
 
+    @ParameterizedTest(name = "function_{0}_Test")
+    @MethodSource(value = "functionTestCases")
+    void concatListTest(String name,
+                        List<String> sourceList,
+                        Map<String, Integer> expected) {
+        Map<String, Integer> result = new InterfaceCreator().stringSize().apply(sourceList);
+        assertEquals(result, expected);
+    }
+
     @ParameterizedTest(name = "biFunction_{0}_Test")
     @MethodSource(value = "biFunctionTestCases")
-    void stringSizeTest(String name,
+    void concatListTest(String name,
                           List<Integer> sourceList1,
                           List<Integer> sourceList2,
                           List<Integer> expected) {
